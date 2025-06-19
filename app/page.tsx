@@ -114,7 +114,7 @@ export default function Home() {
       <section className="py-16 px-6 text-center max-w-3xl mx-auto">
         <h2 className="text-xl font-bold mb-4">🤖 Gemini Summary (Mock)</h2>
         <div className="bg-white border rounded-xl p-6 text-left text-sm text-gray-700">
-          <p><strong>Today’s Insight:</strong> Great job staying hydrated! You logged 3L of water and had a healthy lunch. Consider reducing dinner carbs if your goal is weight loss.</p>
+          <p><strong>Todays Insight:</strong> Great job staying hydrated! You logged 3L of water and had a healthy lunch. Consider reducing dinner carbs if your goal is weight loss.</p>
         </div>
       </section>
 
