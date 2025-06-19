@@ -74,7 +74,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Today’s Stats */}
       <section className="py-12 px-6 max-w-6xl mx-auto text-center">
         <h2 className="text-2xl font-bold mb-6">📊 Today&rsquo;s Stats</h2>
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -84,7 +83,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Feature Section */}
       <section className="py-16 px-6 max-w-6xl mx-auto text-center space-y-12">
         <h2 className="text-2xl font-bold">Why Use AnilSwasthya?</h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
