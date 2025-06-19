@@ -13,3 +13,9 @@ export type UserProfile = {
   startWeightKg: number;
   targetWeightKg?: number;
 };
+export interface WaterReminder {
+  id: string;
+  hour: number;
+  minute: number;
+  enabled: boolean;
+}
