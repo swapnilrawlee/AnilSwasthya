@@ -6,12 +6,18 @@ import { getLogsForDate, deleteLog, updateLog } from '@/lib/localStorage';
 import toast from 'react-hot-toast';
 import { useUser } from '@clerk/nextjs';
 
-const TAGS = ['All', 'Breakfast', 'Lunch', 'Dinner', 'Snack'];
+const TAGS: Array<'All' | 'Breakfast' | 'Lunch' | 'Dinner' | 'Snack'> = [
+  'All',
+  'Breakfast',
+  'Lunch',
+  'Dinner',
+  'Snack',
+];
 
 export default function LogList() {
   const { user } = useUser();
   const [logs, setLogs] = useState<EntryLog[]>([]);
-  const [filterTag, setFilterTag] = useState('All');
+  const [filterTag, setFilterTag] = useState<'All' | 'Breakfast' | 'Lunch' | 'Dinner' | 'Snack'>('All');
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editContent, setEditContent] = useState<string>('');
 
@@ -51,7 +57,7 @@ export default function LogList() {
       return;
     }
     if (!user?.id) return;
-    const updatedLog = { ...log, content: editContent };
+    const updatedLog: EntryLog = { ...log, content: editContent };
     updateLog(user.id, today, updatedLog);
     toast.success('✏️ Entry updated!');
     setEditingId(null);
@@ -105,7 +111,9 @@ export default function LogList() {
             <div className="mt-2 space-y-2">
               <input
                 value={editContent}
-                onChange={(e) => setEditContent(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  setEditContent(e.target.value)
+                }
                 className="w-full border border-gray-300 rounded-lg px-3 py-2"
               />
               <div className="flex justify-end space-x-2">
@@ -126,9 +134,9 @@ export default function LogList() {
           ) : (
             <>
               <p className="text-gray-700 mt-1">{log.content}</p>
-{log.type === 'meal' && log.calories !== undefined && (
-  <p className="text-sm text-orange-600 mt-1">🔥 {log.calories} kcal</p>
-)}
+              {log.type === 'meal' && log.calories !== undefined && (
+                <p className="text-sm text-orange-600 mt-1">🔥 {log.calories} kcal</p>
+              )}
 
               <div className="flex justify-end gap-4 mt-2">
                 <button

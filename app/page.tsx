@@ -4,12 +4,25 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 // Card Component
-function StatCard({ label, value, unit, emoji }: { label: string, value: string | number, unit: string, emoji: string }) {
+function StatCard({
+  label,
+  value,
+  unit,
+  emoji,
+}: {
+  label: string;
+  value: string | number;
+  unit: string;
+  emoji: string;
+}) {
   return (
     <div className="bg-white shadow rounded-xl p-6 text-center space-y-2 border">
       <div className="text-3xl">{emoji}</div>
       <h3 className="font-semibold text-lg">{label}</h3>
-      <p className="text-2xl font-bold">{value} <span className="text-sm font-medium text-gray-500">{unit}</span></p>
+      <p className="text-2xl font-bold">
+        {value}{' '}
+        <span className="text-sm font-medium text-gray-500">{unit}</span>
+      </p>
     </div>
   );
 }
@@ -27,9 +40,9 @@ export default function Home() {
             method: 'POST',
             body: JSON.stringify({ text: '2 roti, 1 cup dal , 1 cup sabji ,salad' }),
             headers: { 'Content-Type': 'application/json' },
-          }).then(res => res.json()),
-          fetch('/api/getWaterIntake').then(res => res.json()),
-          fetch('/api/getWeight').then(res => res.json()),
+          }).then((res) => res.json()),
+          fetch('/api/getWaterIntake').then((res) => res.json()),
+          fetch('/api/getWeight').then((res) => res.json()),
         ]);
 
         setCalories(calRes.calories);
@@ -48,9 +61,14 @@ export default function Home() {
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-blue-50 to-blue-100 text-center">
         <h1 className="text-4xl font-bold mb-4 text-blue-800">AnilSwasthya</h1>
-        <p className="text-lg text-gray-700 mb-6">Track your meals, water, and weight. Build a better lifestyle — one entry at a time.</p>
+        <p className="text-lg text-gray-700 mb-6">
+          Track your meals, water, and weight. Build a better lifestyle &mdash; one entry at a time.
+        </p>
         <div className="flex justify-center gap-4">
-          <Link href="/log" className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium shadow">
+          <Link
+            href="/log"
+            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium shadow"
+          >
             ➕ Log Today
           </Link>
         </div>
@@ -58,7 +76,7 @@ export default function Home() {
 
       {/* Today’s Stats */}
       <section className="py-12 px-6 max-w-6xl mx-auto text-center">
-        <h2 className="text-2xl font-bold mb-6">📊 Today’s Stats</h2>
+        <h2 className="text-2xl font-bold mb-6">📊 Today&rsquo;s Stats</h2>
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
           <StatCard label="Calories" value={calories ?? '...'} unit="kcal" emoji="🥗" />
           <StatCard label="Water Intake" value={water ?? '...'} unit="L" emoji="💧" />
@@ -104,7 +122,9 @@ export default function Home() {
       {/* Graph Section */}
       <section className="bg-gray-50 py-16 px-6 text-center">
         <h2 className="text-xl font-bold mb-4">📈 Stay on Track</h2>
-        <p className="text-gray-600 mb-6">If you continue logging daily, here's a mock preview of your weight journey.</p>
+        <p className="text-gray-600 mb-6">
+          If you continue logging daily, here&rsquo;s a mock preview of your weight journey.
+        </p>
         <div className="bg-white shadow rounded-xl max-w-3xl mx-auto p-6 h-48 flex items-center justify-center text-gray-400">
           [Mock Graph Placeholder]
         </div>
@@ -114,7 +134,10 @@ export default function Home() {
       <section className="py-16 px-6 text-center max-w-3xl mx-auto">
         <h2 className="text-xl font-bold mb-4">🤖 Gemini Summary (Mock)</h2>
         <div className="bg-white border rounded-xl p-6 text-left text-sm text-gray-700">
-          <p><strong>Todays Insight:</strong> Great job staying hydrated! You logged 3L of water and had a healthy lunch. Consider reducing dinner carbs if your goal is weight loss.</p>
+          <p>
+            <strong>Today&rsquo;s Insight:</strong> Great job staying hydrated! You logged 3L of water and had a healthy lunch.
+            Consider reducing dinner carbs if your goal is weight loss.
+          </p>
         </div>
       </section>
 
@@ -128,8 +151,8 @@ export default function Home() {
             { name: 'Arun', quote: 'I love seeing the graph – it motivates me daily!' },
           ].map((t) => (
             <div key={t.name} className="bg-white shadow rounded-xl p-4 text-sm text-left">
-              <p className="text-gray-700 mb-2 italic">"{t.quote}"</p>
-              <p className="text-gray-600 font-semibold">– {t.name}</p>
+              <p className="text-gray-700 mb-2 italic">&quot;{t.quote}&quot;</p>
+              <p className="text-gray-600 font-semibold">&ndash; {t.name}</p>
             </div>
           ))}
         </div>
@@ -138,7 +161,10 @@ export default function Home() {
       {/* Final CTA */}
       <footer className="bg-blue-600 text-white py-10 text-center">
         <h2 className="text-xl font-bold mb-2">Ready to take control of your health?</h2>
-        <Link href="/log" className="mt-4 inline-block bg-white text-blue-600 font-semibold px-6 py-3 rounded-lg shadow hover:bg-gray-100">
+        <Link
+          href="/log"
+          className="mt-4 inline-block bg-white text-blue-600 font-semibold px-6 py-3 rounded-lg shadow hover:bg-gray-100"
+        >
           Start Logging Now
         </Link>
       </footer>
